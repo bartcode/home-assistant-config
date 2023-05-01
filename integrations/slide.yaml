@@ -1,0 +1,4 @@
+---
+slide:
+  username: !secret slide_username
+  password: !secret slide_password

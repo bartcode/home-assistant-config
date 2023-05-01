@@ -1,0 +1,6 @@
+---
+homeassistant:
+  packages: !include_dir_named integrations
+  media_dirs: {}
+
+template: !include_dir_list entities/templates
