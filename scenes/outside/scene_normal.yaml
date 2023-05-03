@@ -1,5 +1,11 @@
-id: d3cec07e-5679-4f6a-ab0b-89818dedf32d
+---
+id: 45363049-b91f-453c-8e5b-d59231438836
 name: outside_normal
-entities: {}
 icon: mdi:lightbulb
-metadata: {}
+entities:
+  light.outside_up:
+    state: "on"
+    brightness_pct: 50
+  light.outside_down:
+    state: "on"
+    brightness_pct: 50

@@ -1,0 +1,41 @@
+alias: remote_living_room
+description: "Living room Philips Hue remote v2"
+use_blueprint:
+  path: philips/hue_remote.yaml
+  input:
+    zha_device: c424f7053f246f11e8e33d604cc2d611
+    Power_Press:
+      - type: toggle
+        device_id: 2496e1ba9a2ba59dcfb1f6dd17bd8c93
+        entity_id: switch.dressoir_light
+        domain: switch
+    Power_Press2x:
+      - type: toggle
+        device_id: d6350e50c4195d8c3af3ae2aa1bf51d0
+        entity_id: light.living_room
+        domain: light
+    Up_Press:
+      - device_id: c65353517ede729140e0ad30048f7d8b
+        domain: light
+        entity_id: light.standing_light
+        type: brightness_increase
+    Down_Press:
+      - device_id: c65353517ede729140e0ad30048f7d8b
+        domain: light
+        entity_id: light.standing_light
+        type: brightness_decrease
+    Hue_Press:
+      - type: toggle
+        device_id: c65353517ede729140e0ad30048f7d8b
+        entity_id: light.standing_light
+        domain: light
+    Down_Press2x:
+      - device_id: d6350e50c4195d8c3af3ae2aa1bf51d0
+        domain: light
+        entity_id: light.living_room
+        type: brightness_decrease
+    Up_Press2x:
+      - device_id: d6350e50c4195d8c3af3ae2aa1bf51d0
+        domain: light
+        entity_id: light.living_room
+        type: brightness_increase

@@ -1,0 +1,31 @@
+alias: alarm
+description: "Trigger an alarm if the door opens and no one is home."
+
+trigger:
+  - platform: state
+    entity_id:
+      - binary_sensor.door
+    to: "on"
+
+variables:
+  anchors:
+    - &house_away_mode
+      alias: "When the house is in away mode"
+      condition: state
+      entity_id: binary_sensor.home_presence
+      state: "off"
+
+    - &trigger_door_alarm
+      alias: Trigger door alarm
+      service: notify.notify
+      data:
+        title: Alarm
+        message: Door opened when away
+
+action:
+  - choose:
+      - conditions:
+          - *house_away_mode
+
+        sequence:
+          - *trigger_door_alarm

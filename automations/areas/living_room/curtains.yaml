@@ -1,0 +1,61 @@
+---
+alias: areas_living_room_curtains
+description: >-
+  Controls the curtains in the living room.
+mode: single
+id: b4f987f4-28c5-41ee-a30e-834b4369be04
+trace:
+  stored_traces: 25
+
+trigger:
+  - platform: homeassistant
+    event: start
+
+  - platform: event
+    event_type: automation_reloaded
+
+  - platform: state
+    entity_id:
+      - input_select.light_schedule
+
+variables:
+  anchors:
+    - &open_curtains
+      alias: "Open the curtains"
+      service: cover.open_cover
+      target:
+        entity_id: cover.front_pro
+
+    - &close_curtains
+      alias: "Close the curtains"
+      service: cover.close_cover
+      target:
+        entity_id: cover.front_pro
+
+action:
+  - choose:
+      - conditions:
+          - and:
+            - or:
+              - condition: state
+                entity_id: input_select.light_schedule
+                state: "evening"
+              - condition: state
+                entity_id: input_select.light_schedule
+                state: "night"
+            - condition: state
+              entity_id: cover.front_pro
+              state: open
+        sequence:
+          - *close_curtains
+
+      - conditions:
+          - and:
+            - condition: state
+              entity_id: input_select.light_schedule
+              state: "day"
+            - condition: state
+              entity_id: cover.front_pro
+              state: closed
+        sequence:
+          - *open_curtains

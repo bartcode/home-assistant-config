@@ -1,0 +1,6 @@
+---
+platform: group
+name: bedroom
+entities:
+  # - switch.bed_light
+  - light.bedroom

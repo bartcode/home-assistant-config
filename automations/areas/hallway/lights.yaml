@@ -1,0 +1,58 @@
+---
+alias: areas_hallway_lights
+description: >-
+  Controls the lights in the hallway.
+mode: single
+id: 6e4c24ea-aa7b-4549-924d-f34a4c2c3c25
+trace:
+  stored_traces: 25
+
+trigger:
+  - platform: homeassistant
+    event: start
+
+  - platform: event
+    event_type: automation_reloaded
+
+  - platform: state
+    entity_id:
+      - binary_sensor.home_presence
+
+  - platform: state
+    entity_id:
+      - input_select.light_schedule
+
+variables:
+  anchors:
+    - &turn_off_lights
+      alias: "Turn the lights off"
+      service: light.turn_off
+      target:
+        area_id: hallway
+
+    - &turn_on_cosy_evening_lights
+      alias: "Make it a cosy evening"
+      service: scene.turn_on
+      target:
+        entity_id:
+          - scene.hallway_normal
+
+action:
+  - choose:
+      - conditions:
+          - condition: state
+            entity_id: input_select.light_schedule
+            state: evening
+        sequence:
+          - *turn_on_cosy_evening_lights
+
+      - conditions:
+          - and:
+              - condition: state
+                entity_id: binary_sensor.home_presence
+                state: "off"
+              - condition: state
+                entity_id: input_select.light_schedule
+                state: night
+        sequence:
+          - *turn_off_lights

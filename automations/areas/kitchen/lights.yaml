@@ -1,0 +1,38 @@
+---
+alias: areas_kitchen_lights
+description: >-
+  Controls the lights in the kitchen.
+mode: single
+id: 647dc8a0-b219-44ad-a6b3-18fe3a3dfece
+trace:
+  stored_traces: 25
+
+trigger:
+  - platform: homeassistant
+    event: start
+
+  - platform: event
+    event_type: automation_reloaded
+
+  - platform: state
+    entity_id:
+      - binary_sensor.home_presence
+    to: "off"
+
+variables:
+  anchors:
+    - &turn_off_lights
+      alias: "Turn the lights off"
+      service: light.turn_off
+      target:
+        area_id: kitchen
+
+action:
+  - choose:
+      - conditions:
+          - alias: "When the house is in away mode"
+            condition: state
+            entity_id: binary_sensor.home_presence
+            state: "off"
+        sequence:
+          - *turn_off_lights

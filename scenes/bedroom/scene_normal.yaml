@@ -1,5 +1,10 @@
-id: 0e7f4511-9589-4bd2-9adc-32ee7cca4702
+---
+id: e50ab81a-6a53-47fe-8058-bc840f2e147d
 name: bedroom_normal
-entities: {}
 icon: mdi:lightbulb
-metadata: {}
+entities:
+  switch.bed_light:
+    state: "off"
+  light.bedroom:
+    state: "on"
+    brightness_pct: 50

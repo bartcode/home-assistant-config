@@ -1,0 +1,46 @@
+---
+alias: areas_bedroom_lights
+description: >-
+  Controls the lights in the bedroom.
+mode: single
+id: 4c7eaf56-4318-4ac1-b15d-ed0fc90eb2aa
+trace:
+  stored_traces: 25
+
+trigger:
+  - platform: homeassistant
+    event: start
+
+  - platform: event
+    event_type: automation_reloaded
+
+  - platform: state
+    entity_id:
+      - binary_sensor.home_presence
+    to: "off"
+
+variables:
+  anchors:
+    - &turn_off_lights
+      alias: "Turn the lights off"
+      service: light.turn_off
+      target:
+        area_id: bedroom
+      data:
+        transition: 5
+    - &turn_off_switches
+      alias: "Turn the switches off"
+      service: switch.turn_off
+      target:
+        area_id: bedroom
+
+action:
+  - choose:
+      - conditions:
+          - alias: "When the house is in away mode"
+            condition: state
+            entity_id: binary_sensor.home_presence
+            state: "off"
+        sequence:
+          - *turn_off_lights
+          - *turn_off_switches

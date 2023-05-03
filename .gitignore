@@ -1,4 +1,5 @@
 # Generic ignores
+.DS_Store
 *.log
 home-assistant.log*
 *.db
@@ -21,10 +22,12 @@ config_files
 deps
 image
 tts
+nest
+ps5-mqtt
 scripts/alarm
 automations/system/notifications/private
 www/fonts
-fonts
+# fonts
 www/upcoming-media-card-images
 www/nspanel
 www/community
@@ -53,3 +56,4 @@ google_calendars.yaml
 
 # Keep specific custom components required for CI
 custom_components/*
+.HA_VERSION

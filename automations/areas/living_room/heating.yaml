@@ -1,0 +1,40 @@
+---
+alias: areas_living_room_heating
+description: >-
+  Controls the heating in the living room.
+mode: single
+id: db64fd24-6197-4ac0-902f-0f4d5f4a34a2
+trace:
+  stored_traces: 25
+
+trigger:
+  - platform: homeassistant
+    event: start
+
+  - platform: event
+    event_type: automation_reloaded
+
+  - platform: state
+    entity_id:
+      - binary_sensor.home_presence
+
+  - platform: state
+    entity_id:
+      - input_select.light_schedule
+
+variables:
+  anchors:
+    - &turn_off_heating
+      alias: "Turn the heating off"
+      service: climate.turn_off
+      target:
+        area_id: living_room
+
+action:
+  - choose:
+      - conditions:
+          - condition: state
+            entity_id: input_select.light_schedule
+            state: "night"
+        sequence:
+          - *turn_off_heating

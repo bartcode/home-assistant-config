@@ -1,0 +1,6 @@
+---
+name: Light schedule
+options:
+  - day
+  - night
+  - bright

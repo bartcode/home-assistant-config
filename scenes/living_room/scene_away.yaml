@@ -1,0 +1,11 @@
+---
+id: 1d79dc9d-212b-4cf1-9488-9a06aaa886a2
+name: living_room_away
+icon: mdi:lightbulb
+entities:
+  switch.dressoir_light:
+    state: "on"
+  light.living_room:
+    state: "off"
+  light.standing_light:
+    state: "off"

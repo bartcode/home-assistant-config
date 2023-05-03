@@ -1,5 +1,10 @@
-id: 3e811b09-0b35-402d-a0d8-ca74768d1de2
+---
+id: 464d8dc1-842c-4a4d-84ef-f76ea1d16cf3
 name: office_normal
-entities: {}
 icon: mdi:lightbulb
-metadata: {}
+entities:
+  light.office:
+    state: "on"
+    brightness_pct: 25
+    color_mode: color_temp
+    color_temp_kelvin: 6535

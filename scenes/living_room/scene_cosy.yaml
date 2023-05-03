@@ -1,15 +1,14 @@
 ---
-id: 8bd6f68d-9e94-4eda-a02a-a607b1e77a05
-name: living_room_normal
+id: 92819683-2102-4f02-b481-6d48eb8a2771
+name: living_room_cosy
 icon: mdi:lightbulb
 entities:
   switch.dressoir_light:
-    state: "on"
+    state: "off"
   light.living_room:
-    state: "on"
-    brightness_pct: 30
+    state: "off"
   light.standing_light:
     state: "on"
     color_mode: color_temp
-    brightness_pct: 25
+    brightness_pct: 8
     color_temp_kelvin: 6535

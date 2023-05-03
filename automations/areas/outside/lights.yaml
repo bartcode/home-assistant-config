@@ -1,0 +1,38 @@
+---
+alias: areas_outside_lights
+description: >-
+  Controls the lights outside and in the shed.
+mode: single
+id: b930d4a4-c182-48ab-b8c5-9cd364d4914a
+trace:
+  stored_traces: 25
+
+trigger:
+  - platform: homeassistant
+    event: start
+
+  - platform: event
+    event_type: automation_reloaded
+
+  - platform: state
+    entity_id:
+      - binary_sensor.home_presence
+    to: "off"
+
+variables:
+  anchors:
+    - &turn_off_lights
+      alias: "Turn the lights off"
+      service: light.turn_off
+      target:
+        area_id: shed
+
+action:
+  - choose:
+      - conditions:
+          - alias: "When the house is in away mode"
+            condition: state
+            entity_id: binary_sensor.home_presence
+            state: "off"
+        sequence:
+          - *turn_off_lights

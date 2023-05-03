@@ -1,0 +1,26 @@
+alias: remote_kitchen
+description: "Kitchen Philips Hue remote v2"
+use_blueprint:
+  path: philips/hue_remote.yaml
+  input:
+    zha_device: eb4ff37b987a66ff966da04771e511e6
+    Power_Press:
+      - type: toggle
+        device_id: 116891165a67592e9482293a6775dc7b
+        entity_id: light.kitchen
+        domain: light
+    Up_Press:
+      - device_id: 116891165a67592e9482293a6775dc7b
+        domain: light
+        entity_id: light.kitchen
+        type: brightness_increase
+    Down_Press:
+      - device_id: 116891165a67592e9482293a6775dc7b
+        domain: light
+        entity_id: light.kitchen
+        type: brightness_decrease
+    Hue_Press:
+      - type: toggle
+        device_id: 116891165a67592e9482293a6775dc7b
+        entity_id: light.kitchen
+        domain: light

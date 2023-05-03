@@ -1,0 +1,60 @@
+---
+alias: areas_living_room_actuators
+description: >-
+  Controls the actuators in the living room.
+mode: single
+id: 787831aa-6b2b-4d16-b820-a7237c61ee58
+trace:
+  stored_traces: 25
+
+trigger:
+  - platform: state
+    entity_id:
+      - switch.ps5_power
+
+variables:
+  anchors:
+    - &expand_actuator
+      alias: "Expand actuator"
+      service: light.turn_on
+      target:
+        entity_id: light.actuator_expand
+
+    - &delay
+      alias: "Wait 2 seconds"
+      delay:
+        hours: 0
+        minutes: 0
+        seconds: 2
+        milliseconds: 750
+
+    - &stop_actuator
+      alias: "Stop actuator"
+      service: light.turn_off
+      target:
+        entity_id:
+          - light.actuator_collapse
+          - light.actuator_expand
+
+    - &collapse_actuator
+      alias: "Collapse actuator"
+      service: light.turn_on
+      target:
+        entity_id: light.actuator_collapse
+
+action:
+  - choose:
+      - conditions:
+          - condition: state
+            entity_id: switch.ps5_power
+            state: "on"
+        sequence:
+          - *stop_actuator
+          - *expand_actuator
+          - *delay
+          - *stop_actuator
+    default:
+      - *stop_actuator
+      - *collapse_actuator
+      - *delay
+      - *stop_actuator

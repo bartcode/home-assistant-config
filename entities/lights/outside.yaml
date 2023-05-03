@@ -1,0 +1,8 @@
+---
+platform: group
+name: outside
+entities:
+  - light.outside_down
+  - light.outside_up
+  - light.shed_night_light
+  - light.inside

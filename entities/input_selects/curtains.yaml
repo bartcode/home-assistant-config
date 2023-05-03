@@ -1,0 +1,6 @@
+---
+name: Curtains living room
+icon: mdi:blinds
+options:
+  - open
+  - closed

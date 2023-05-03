@@ -1,5 +1,10 @@
-id: d3cec07e-5679-4f6a-ab0b-89818dedf32d
-name: outside_normal
-entities: {}
+---
+id: 62669bb2-b7da-482a-b4b3-2e029bfb15e5
+name: hallway_normal
 icon: mdi:lightbulb
-metadata: {}
+entities:
+  light.hallway:
+    state: "on"
+    brightness_pct: 25
+  light.entryway:
+    state: "off"

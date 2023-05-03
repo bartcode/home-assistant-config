@@ -1,0 +1,7 @@
+---
+platform: group
+name: living_room
+entities:
+  # - switch.dressoir_light
+  - light.living_room
+  - light.standing_light
