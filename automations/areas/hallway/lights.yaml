@@ -28,7 +28,7 @@ variables:
       alias: "Turn the lights off"
       service: light.turn_off
       target:
-        area_id: hallway
+        area_id: hallway_group
 
     - &turn_on_cosy_evening_lights
       alias: "Make it a cosy evening"
@@ -51,8 +51,12 @@ action:
               - condition: state
                 entity_id: binary_sensor.home_presence
                 state: "off"
-              - condition: state
-                entity_id: input_select.light_schedule
-                state: night
+              - or:
+                - condition: state
+                  entity_id: input_select.light_schedule
+                  state: night
+                - condition: state
+                  entity_id: input_select.light_schedule
+                  state: day
         sequence:
           - *turn_off_lights

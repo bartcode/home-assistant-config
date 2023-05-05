@@ -1,6 +1,6 @@
 ---
 platform: group
-name: hallway
+name: hallway_group
 entities:
   - light.hallway
   - light.entryway

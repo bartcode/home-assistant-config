@@ -1,6 +1,6 @@
 ---
 platform: group
-name: outside
+name: outside_group
 entities:
   - light.outside_down
   - light.outside_up

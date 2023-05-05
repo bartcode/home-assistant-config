@@ -1,5 +1,5 @@
 ---
 platform: group
-name: kitchen
+name: kitchen_group
 entities:
   - light.kitchen

@@ -1,6 +1,6 @@
 ---
 platform: group
-name: living_room
+name: living_room_group
 entities:
   # - switch.dressoir_light
   - light.living_room

@@ -25,14 +25,14 @@ variables:
       alias: "Turn the lights off"
       service: light.turn_off
       target:
-        area_id: bedroom
+        area_id: bedroom_group
       data:
         transition: 5
     - &turn_off_switches
       alias: "Turn the switches off"
       service: switch.turn_off
       target:
-        area_id: bedroom
+        area_id: bedroom_group
 
 action:
   - choose:
