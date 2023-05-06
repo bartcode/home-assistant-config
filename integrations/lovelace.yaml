@@ -1,22 +1,10 @@
 ---
 lovelace:
   mode: storage
-  # resources:
-  #   - url: /local/community/banner-card/banner-card.js
-  #     type: module
-  #   - url: /local/community/button-card/button-card.js
-  #     type: module
-  #   - url: /local/community/light-entity-card/light-entity-card.js
-  #     type: module
-  #   - url: /local/community/lovelace-auto-entities/auto-entities.js
-  #     type: module
-  #   - url: /local/community/lovelace-card-mod/card-mod.js
-  #     type: module
-  #   - url: /local/community/mini-graph-card/mini-graph-card-bundle.js
-  #     type: module
-  #   - url: /local/community/mini-media-player/mini-media-player-bundle.js
-  #     type: module
-  #   - url: /local/community/my-cards/my-cards.js
-  #     type: module
-  #   - url: /browser_mod.js
-  #     type: module
+  dashboards:
+    lovelace-home:
+      mode: yaml
+      filename: dashboards/ui.yaml
+      title: Gibraltar
+      icon: mdi:view-dashboard
+      show_in_sidebar: true

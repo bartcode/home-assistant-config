@@ -1,0 +1,43 @@
+id: 5e69403f-3551-46ed-841e-64f0f9a5ebe1
+alias: cat_tracker
+description: Track home presence of cats and update device_tracker
+mode: queued
+
+trigger:
+  - platform: homeassistant
+    event: start
+
+  - platform: event
+    event_type: automation_reloaded
+
+  - platform: state
+    entity_id: binary_sensor.balou
+
+  - platform: state
+    entity_id: binary_sensor.noekie
+
+action:
+  - service: device_tracker.see
+    data:
+      dev_id: "balou"
+      location_name: >
+        {% if is_state("binary_sensor.balou", "on") %}
+          home
+        {% elif is_state("binary_sensor.balou", "off") %}
+          not_home
+        {% else %}
+            unknown
+        {% endif %}
+      source_type: "router"
+  - service: device_tracker.see
+    data:
+      dev_id: "noekie"
+      location_name: >
+        {% if is_state("binary_sensor.noekie", "on") %}
+          home
+        {% elif is_state("binary_sensor.noekie", "off") %}
+          not_home
+        {% else %}
+            unknown
+        {% endif %}
+      source_type: "router"

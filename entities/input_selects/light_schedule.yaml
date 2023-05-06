@@ -2,5 +2,5 @@
 name: Light schedule
 options:
   - day
+  - evening
   - night
-  - bright
