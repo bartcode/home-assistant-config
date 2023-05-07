@@ -1,5 +1,8 @@
 alias: alarm
 description: "Trigger an alarm if the door opens and no one is home."
+trace:
+  stored_traces: 25
+
 
 trigger:
   - platform: state

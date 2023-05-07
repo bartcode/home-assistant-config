@@ -5,6 +5,8 @@ description: >
 alias: house_light_schedule
 id: 62ee2d9b-9144-4309-9831-ec7e19d9fbfb
 mode: single
+trace:
+  stored_traces: 25
 
 trigger:
   - platform: state
@@ -38,44 +40,32 @@ variables:
 action:
   - choose:
       - conditions:
-        - or:
-            - condition: time
-              after: "22:30:00"
-            - condition: time
-              before: "07:00:00"
+          - or:
+              - condition: time
+                after: "22:30:00"
+              - condition: time
+                before: "07:00:00"
         sequence:
           - <<: *select_schedule
             data:
               option: "night"
 
       - conditions:
-        - and:
-          - condition: numeric_state
-            entity_id: sensor.outside_light_intensity
-            below: 150
-          - or:
-              - condition: time
-                after: "17:30:00"
-              - condition: time
-                before: "07:00:00"
+          - and:
+              - condition: numeric_state
+                entity_id: sensor.outside_light_intensity
+                below: 150
+              - or:
+                  - condition: time
+                    after: "17:30:00"
+                  - condition: time
+                    before: "07:00:00"
         sequence:
           - <<: *select_schedule
             data:
               option: "evening"
 
-      - conditions:
-        - and:
-          - condition: numeric_state
-            entity_id: sensor.outside_light_intensity
-            above: 150
-          - or:
-              - condition: time
-                before: "17:30:00"
-              - condition: time
-                after: "07:00:00"
-        sequence:
-          - <<: *select_schedule
-            data:
-              option: "day"
-
-    default: []
+    default:
+      - <<: *select_schedule
+        data:
+          option: "day"

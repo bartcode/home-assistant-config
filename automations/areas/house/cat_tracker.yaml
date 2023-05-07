@@ -3,6 +3,9 @@ alias: cat_tracker
 description: Track home presence of cats and update device_tracker
 mode: queued
 
+trace:
+  stored_traces: 25
+
 trigger:
   - platform: homeassistant
     event: start
