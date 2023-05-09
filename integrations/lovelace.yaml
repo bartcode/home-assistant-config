@@ -6,5 +6,5 @@ lovelace:
       mode: yaml
       filename: dashboards/ui.yaml
       title: Gibraltar
-      icon: mdi:view-dashboard
+      icon: mdi:home-analytics
       show_in_sidebar: true

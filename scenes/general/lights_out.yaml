@@ -1,0 +1,31 @@
+---
+id: 1ba73524-7004-4cb0-ba96-aec9844d08bb
+name: lights_out
+icon: mdi:lightbulb
+entities:
+  light.bedroom:
+    state: "off"
+  switch.bed_light:
+    state: "off"
+  light.hallway:
+    state: "off"
+  light.entryway:
+    state: "off"
+  light.kitchen:
+    state: "off"
+  light.living_room:
+    state: "off"
+  light.standing_light:
+    state: "off"
+  switch.dressoir_light:
+    state: "off"
+  light.office:
+    state: "off"
+  light.outside_down:
+    state: "off"
+  light.outside_up:
+    state: "off"
+  light.inside:
+    state: "off"
+  light.shed_night_light:
+    state: "off"

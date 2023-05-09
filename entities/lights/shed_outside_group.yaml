@@ -1,0 +1,6 @@
+---
+platform: group
+name: shed_outside_group
+entities:
+  - light.outside_down
+  - light.outside_up

@@ -19,6 +19,10 @@ trigger:
       - binary_sensor.home_presence
     to: "off"
 
+  - platform: state
+    entity_id:
+      - input_select.light_schedule
+
 variables:
   anchors:
     - &turn_off_lights
@@ -26,6 +30,11 @@ variables:
       service: light.turn_off
       target:
         area_id: shed_group
+    - &turn_on_outside
+      alias: "Turn on the outside lights"
+      service: light.turn_on
+      target:
+        entity_id: light.shed_outside_group
 
 action:
   - choose:
@@ -36,3 +45,16 @@ action:
             state: "off"
         sequence:
           - *turn_off_lights
+      - conditions:
+          - and:
+            - alias: "When people are home"
+              condition: state
+              entity_id: binary_sensor.home_presence
+              state: "on"
+            - condition: state
+              entity_id: input_select.light_schedule
+              state: "evening"
+        sequence:
+          - *turn_on_outside
+    default:
+      - *turn_off_lights

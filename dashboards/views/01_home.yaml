@@ -1,0 +1,248 @@
+path: home
+title: Home
+icon: "mdi:home"
+type: masonry
+
+cards:
+  - type: grid
+    square: false
+    columns: 1
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: markdown
+            content: >
+              ## Home
+          - type: horizontal-stack
+            cards:
+              - type: tile
+                entity: person.bart
+                show_entity_picture: true
+                vertical: true
+              - type: tile
+                entity: person.myrthe
+                show_entity_picture: true
+                vertical: true
+              - type: tile
+                entity: person.balou
+                show_entity_picture: true
+                vertical: true
+              - type: tile
+                entity: person.noekie
+                show_entity_picture: true
+                vertical: true
+          - type: tile
+            entity: sensor.water_bowl
+          - type: markdown
+            content: >
+              ### Quick scenes
+          - type: grid
+            square: false
+            columns: 2
+            cards:
+              - type: tile
+                name: All out
+                icon: "mdi:light-switch-off"
+                entity: scene.lights_out
+              - type: tile
+                name: Cosy
+                icon: "mdi:teddy-bear"
+                entity: scene.living_room_cosy
+
+  - type: grid
+    square: false
+    columns: 1
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: markdown
+            content: >
+              ## Living room
+          - type: horizontal-stack
+            cards:
+              - type: tile
+                entity: light.living_room
+                features:
+                  - type: "light-brightness"
+              - type: tile
+                entity: light.standing_light
+                features:
+                  - type: "light-brightness"
+              - type: tile
+                entity: switch.dressoir_light
+                icon: mdi:lamp
+                color: yellow
+          - type: tile
+            entity: cover.front_pro
+            features:
+              - type: "cover-open-close"
+          - type: thermostat
+            entity: climate.living_room
+          - type: media-control
+            entity:
+              media_player.living_room
+  - type: grid
+    square: false
+    columns: 1
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: markdown
+            content: >
+              ## Hallway
+          - type: horizontal-stack
+            cards:
+              - type: tile
+                entity: light.hallway
+                features:
+                  - type: "light-brightness"
+              - type: tile
+                entity: light.entryway
+                features:
+                  - type: "light-brightness"
+          - type: picture-entity
+            entity:
+              camera.entryway
+  - type: grid
+    square: false
+    columns: 1
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: markdown
+            content: >
+              ## Bedroom
+          - type: horizontal-stack
+            cards:
+              - type: tile
+                entity: light.bedroom
+                features:
+                  - type: "light-brightness"
+              - type: tile
+                entity: switch.bed_light
+          - type: media-control
+            entity:
+              media_player.bedroom
+  - type: grid
+    square: false
+    columns: 1
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: markdown
+            content: >
+              ## Kitchen
+          - type: vertical-stack
+            cards:
+              - type: tile
+                entity: light.kitchen
+                features:
+                  - type: "light-brightness"
+              - type: horizontal-stack
+                cards:
+                - type: tile
+                  name: Dishwasher
+                  entity: switch.dishwasher_power
+                - type: tile
+                  name: ETA
+                  entity: sensor.dishwasher_remaining_program_time
+              - type: horizontal-stack
+                cards:
+                  - type: tile
+                    name: All
+                    entity: lock.kitchen_flap_locked_all
+                  - type: tile
+                    name: In
+                    entity: lock.kitchen_flap_locked_in
+                  - type: tile
+                    name: Out
+                    entity: lock.kitchen_flap_locked_out
+              - type: media-control
+                entity:
+                  media_player.kitchen
+  - type: grid
+    square: false
+    columns: 1
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: markdown
+            content: >
+              ## Office
+          - type: vertical-stack
+            cards:
+              - type: tile
+                entity: light.office
+                features:
+                  - type: "light-brightness"
+              - type: media-control
+                entity:
+                  media_player.office
+  - type: grid
+    square: false
+    columns: 1
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: markdown
+            content: >
+              ## Shed
+          - type: tile
+            entity: light.shed_outside_group
+            name: Outside
+            features:
+              - type: "light-brightness"
+          - type: horizontal-stack
+            cards:
+              - type: tile
+                entity: light.inside
+              - type: tile
+                name: Night light
+                entity: light.shed_night_light
+  - type: grid
+    square: false
+    columns: 1
+    cards:
+      - type: energy-distribution
+        title: Energy distribution today
+        link_dashboard: true
+  - type: grid
+    square: false
+    columns: 1
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: markdown
+            content: >
+              ## Batteries
+          - type: grid
+            square: false
+            columns: 4
+            cards:
+              - type: tile
+                entity: sensor.pixel_7_pro_battery
+                vertical: true
+
+              - type: tile
+                entity: sensor.door_sensor_battery
+                vertical: true
+
+              - type: tile
+                entity: sensor.light_intensity_battery
+                vertical: true
+
+              - type: tile
+                entity: sensor.kitchen_flap_battery_level
+                vertical: true
+
+              - type: tile
+                entity: sensor.water_bowl_battery_level
+                vertical: true
+
+              - type: tile
+                entity: sensor.living_room_remote_battery
+                vertical: true
+
+              - type: tile
+                entity: sensor.kitchen_remote_battery
+                vertical: true

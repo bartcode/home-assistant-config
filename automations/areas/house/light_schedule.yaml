@@ -24,6 +24,18 @@ trigger:
       - sensor.outside_light_intensity
 
   - platform: time
+    at: "08:00:00"
+
+  - platform: time
+    at: "08:30:00"
+
+  - platform: time
+    at: "09:30:00"
+
+  - platform: time
+    at: "21:30:00"
+
+  - platform: time
     at: "22:30:00"
 
   - platform: homeassistant
@@ -40,11 +52,9 @@ variables:
 action:
   - choose:
       - conditions:
-          - or:
-              - condition: time
-                after: "22:30:00"
-              - condition: time
-                before: "07:00:00"
+          - condition: time
+            after: "22:30:00"
+            before: "07:00:00"
         sequence:
           - <<: *select_schedule
             data:
@@ -55,11 +65,9 @@ action:
               - condition: numeric_state
                 entity_id: sensor.outside_light_intensity
                 below: 150
-              - or:
-                  - condition: time
-                    after: "17:30:00"
-                  - condition: time
-                    before: "07:00:00"
+              - condition: time
+                after: "17:30:00"
+                before: "07:00:00"
         sequence:
           - <<: *select_schedule
             data:
