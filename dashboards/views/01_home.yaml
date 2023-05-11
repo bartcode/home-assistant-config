@@ -31,8 +31,12 @@ cards:
                 entity: person.noekie
                 show_entity_picture: true
                 vertical: true
-          - type: tile
-            entity: sensor.water_bowl
+          - type: horizontal-stack
+            cards:
+              - type: tile
+                entity: sensor.water_bowl
+              - type: tile
+                entity: switch.ps5_power
           - type: markdown
             content: >
               ### Quick scenes

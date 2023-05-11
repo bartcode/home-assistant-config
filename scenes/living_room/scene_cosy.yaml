@@ -9,6 +9,3 @@ entities:
     state: "off"
   light.standing_light:
     state: "on"
-    color_mode: color_temp
-    brightness_pct: 8
-    color_temp_kelvin: 6535

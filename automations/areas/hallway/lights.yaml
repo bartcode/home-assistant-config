@@ -17,10 +17,10 @@ trigger:
   - platform: state
     entity_id:
       - binary_sensor.home_presence
-
-  - platform: state
-    entity_id:
       - input_select.light_schedule
+
+  - platform: time
+    at: "22:30:00"
 
 variables:
   anchors:
@@ -52,11 +52,11 @@ action:
                 entity_id: binary_sensor.home_presence
                 state: "off"
               - or:
-                - condition: state
-                  entity_id: input_select.light_schedule
-                  state: night
-                - condition: state
-                  entity_id: input_select.light_schedule
-                  state: day
+                  - condition: state
+                    entity_id: input_select.light_schedule
+                    state: night
+                  - condition: state
+                    entity_id: input_select.light_schedule
+                    state: day
         sequence:
           - *turn_off_lights

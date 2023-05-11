@@ -17,6 +17,12 @@ trigger:
   - platform: time
     at: "08:00:00"
 
+  - platform: time
+    at: "08:30:00"
+
+  - platform: time
+    at: "09:00:00"
+
   - platform: sun
     event: sunrise
 
@@ -74,14 +80,14 @@ action:
 
       - conditions:
           - or:
-            - condition: state
-              entity_id: input_select.light_schedule
-              state: "evening"
-            - condition: state
-              entity_id: input_select.light_schedule
-              state: "night"
-            - condition: time
-              after: "20:30:00"
-              before: "08:00:00"
+              - condition: state
+                entity_id: input_select.light_schedule
+                state: "evening"
+              - condition: state
+                entity_id: input_select.light_schedule
+                state: "night"
+              - condition: time
+                after: "21:30:00"
+                before: "08:00:00"
         sequence:
           - *close_curtains

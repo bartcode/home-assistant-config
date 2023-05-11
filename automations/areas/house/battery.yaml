@@ -1,0 +1,106 @@
+id: c5013b6a-1819-40cd-ad75-a53125eb736e
+alias: battery
+description: "Trigger an alarm if a battery is running low."
+trace:
+  stored_traces: 25
+
+trigger:
+  - platform: homeassistant
+    event: start
+
+  - platform: event
+    event_type: automation_reloaded
+
+  - platform: numeric_state
+    entity_id:
+      - sensor.water_bowl_battery_level
+      - sensor.kitchen_flap_battery_level
+      - sensor.door_sensor_battery
+      - sensor.light_intensity_battery
+
+variables:
+  anchors:
+    - &trigger_battery_warning
+      alias: Trigger battery warning
+      service: notify.notify
+      data:
+        title: Battery warning
+        message: Door opened when away
+
+action:
+  - choose:
+      - conditions:
+          - condition: numeric_state
+            entity_id: sensor.water_bowl_battery_level
+            below: 25
+            above: 10
+        sequence:
+          - <<: *trigger_battery_warning
+            data:
+              option: "Battery for water bowl <25%"
+
+      - conditions:
+          - condition: numeric_state
+            entity_id: sensor.kitchen_flap_battery_level
+            below: 25
+            above: 10
+        sequence:
+          - <<: *trigger_battery_warning
+            data:
+              option: "Battery for kitchen flap <25%"
+
+      - conditions:
+          - condition: numeric_state
+            entity_id: sensor.door_sensor_battery
+            below: 25
+            above: 10
+        sequence:
+          - <<: *trigger_battery_warning
+            data:
+              option: "Battery for door sensor <25%"
+
+      - conditions:
+          - condition: numeric_state
+            entity_id: sensor.light_intensity_battery
+            below: 25
+            above: 10
+        sequence:
+          - <<: *trigger_battery_warning
+            data:
+              option: "Battery for light intensity sensor <25%"
+
+      - conditions:
+          - condition: numeric_state
+            entity_id: sensor.water_bowl_battery_level
+            below: 10
+        sequence:
+          - <<: *trigger_battery_warning
+            data:
+              option: "Battery for water bowl <10%"
+
+      - conditions:
+          - condition: numeric_state
+            entity_id: sensor.kitchen_flap_battery_level
+            below: 10
+        sequence:
+          - <<: *trigger_battery_warning
+            data:
+              option: "Battery for kitchen flap <10%"
+
+      - conditions:
+          - condition: numeric_state
+            entity_id: sensor.door_sensor_battery
+            below: 10
+        sequence:
+          - <<: *trigger_battery_warning
+            data:
+              option: "Battery for door sensor <10%"
+
+      - conditions:
+          - condition: numeric_state
+            entity_id: sensor.light_intensity_battery
+            below: 10
+        sequence:
+          - <<: *trigger_battery_warning
+            data:
+              option: "Battery for light intensity sensor <10%"

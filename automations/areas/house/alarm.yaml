@@ -1,3 +1,4 @@
+id: 54a3309c-25d5-4eb3-a400-68c27fc9a4ce
 alias: alarm
 description: "Trigger an alarm if the door opens and no one is home."
 trace:

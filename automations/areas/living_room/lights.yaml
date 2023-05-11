@@ -17,10 +17,8 @@ trigger:
   - platform: state
     entity_id:
       - binary_sensor.home_presence
-
-  - platform: state
-    entity_id:
       - input_select.light_schedule
+      - cover.front_pro
 
 variables:
   anchors:
@@ -59,6 +57,9 @@ action:
               - condition: state
                 entity_id: input_select.light_schedule
                 state: "evening"
+              - condition: state
+                entity_id: cover.front_pro
+                state: "closed"
         sequence:
           - *turn_on_cosy_evening_lights
 

@@ -14,10 +14,9 @@ trigger:
     event_type: automation_reloaded
 
   - platform: state
-    entity_id: binary_sensor.balou
-
-  - platform: state
-    entity_id: binary_sensor.noekie
+    entity_id:
+      - binary_sensor.balou
+      - binary_sensor.noekie
 
 action:
   - service: device_tracker.see
