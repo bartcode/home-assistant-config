@@ -200,6 +200,8 @@ cards:
             cards:
               - type: tile
                 entity: light.inside
+                features:
+                  - type: "light-brightness"
               - type: tile
                 name: Night light
                 entity: light.shed_night_light

@@ -54,9 +54,13 @@ action:
               - condition: state
                 entity_id: binary_sensor.home_presence
                 state: "on"
-              - condition: state
-                entity_id: input_select.light_schedule
-                state: "evening"
+              - or:
+                - condition: state
+                  entity_id: input_select.light_schedule
+                  state: "evening"
+                - condition: state
+                  entity_id: input_select.light_schedule
+                  state: "day"
               - condition: state
                 entity_id: cover.front_pro
                 state: "closed"
