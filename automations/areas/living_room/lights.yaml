@@ -89,14 +89,3 @@ action:
         sequence:
           - *turn_off_lights
           - *turn_off_switches
-
-      - conditions:
-          - and:
-              - condition: state
-                entity_id: binary_sensor.home_presence
-                state: "off"
-              - condition: state
-                entity_id: input_select.light_schedule
-                state: "evening"
-        sequence:
-          - *turn_on_lights_against_thieves
