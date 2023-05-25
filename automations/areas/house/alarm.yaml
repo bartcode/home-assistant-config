@@ -27,6 +27,7 @@ variables:
         message: Door opened when away
 
 action:
+  - delay: "00:01:30"  # Give the user some time to connect to the wifi
   - choose:
       - conditions:
           - *house_away_mode

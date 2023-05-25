@@ -61,6 +61,9 @@ action:
                 - condition: state
                   entity_id: input_select.light_schedule
                   state: "day"
+              - condition: time
+                after: "16:00:00"
+                before: "23:30:00"
               - condition: state
                 entity_id: cover.front_pro
                 state: "closed"

@@ -5,7 +5,7 @@ sensors:
     friendly_name: "Home presence"
     device_class: presence
     value_template: >-
-      {% set devices = ['device_tracker.bart', 'device_tracker.myrthe'] %}
+      {% set devices = ['device_tracker.bart', 'device_tracker.myrthe', 'device_tracker.erik'] %}
       {% set ns = namespace(home_devices=[]) %}
       {% for device in devices %}
         {% if is_state(device, 'home') %}

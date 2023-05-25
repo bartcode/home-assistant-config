@@ -323,12 +323,12 @@ color:
     white: 100%
 
 # Pins for Waveshare ePaper ESP Board
-# spi:
-#   clk_pin: GPIO13
-#   mosi_pin: GPIO14
 spi:
-  clk_pin: GPIO18
-  mosi_pin: GPIO23
+  clk_pin: GPIO13
+  mosi_pin: GPIO14
+# spi:
+#   clk_pin: GPIO18
+#   mosi_pin: GPIO23
 
 # Now render everything on the ePaper screen.
 display:
