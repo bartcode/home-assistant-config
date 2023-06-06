@@ -22,6 +22,9 @@ trigger:
   - platform: time
     at: "22:30:00"
 
+  - platform: time
+    at: "23:00:00"
+
 variables:
   anchors:
     - &turn_off_lights

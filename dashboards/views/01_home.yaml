@@ -31,10 +31,10 @@ cards:
                 entity: person.noekie
                 show_entity_picture: true
                 vertical: true
-              - type: tile
-                entity: person.erik
-                show_entity_picture: true
-                vertical: true
+              # - type: tile
+              #   entity: person.erik
+              #   show_entity_picture: true
+              #   vertical: true
           - type: horizontal-stack
             cards:
               - type: tile
