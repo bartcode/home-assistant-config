@@ -30,6 +30,7 @@ variables:
       service: light.turn_off
       target:
         entity_id: light.shed_outside_group
+
     - &turn_on_outside
       alias: "Turn on the outside lights"
       service: light.turn_on

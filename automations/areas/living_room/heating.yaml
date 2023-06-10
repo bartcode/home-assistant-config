@@ -25,7 +25,7 @@ variables:
       alias: "Turn the heating off"
       service: climate.turn_off
       target:
-        area_id: living_room_group
+        area_id: living_room
 
 action:
   - choose:
