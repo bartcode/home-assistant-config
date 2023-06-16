@@ -25,7 +25,6 @@ variables:
       service: notify.notify
       data:
         title: Battery warning
-        message: Door opened when away
 
 action:
   - choose:
@@ -37,7 +36,7 @@ action:
         sequence:
           - <<: *trigger_battery_warning
             data:
-              option: "Battery for water bowl <25%"
+              message: "Battery for water bowl <25%"
 
       - conditions:
           - condition: numeric_state
@@ -47,7 +46,7 @@ action:
         sequence:
           - <<: *trigger_battery_warning
             data:
-              option: "Battery for kitchen flap <25%"
+              message: "Battery for kitchen flap <25%"
 
       - conditions:
           - condition: numeric_state
@@ -57,7 +56,7 @@ action:
         sequence:
           - <<: *trigger_battery_warning
             data:
-              option: "Battery for door sensor <25%"
+              message: "Battery for door sensor <25%"
 
       - conditions:
           - condition: numeric_state
@@ -67,7 +66,7 @@ action:
         sequence:
           - <<: *trigger_battery_warning
             data:
-              option: "Battery for light intensity sensor <25%"
+              message: "Battery for light intensity sensor <25%"
 
       - conditions:
           - condition: numeric_state
@@ -76,7 +75,7 @@ action:
         sequence:
           - <<: *trigger_battery_warning
             data:
-              option: "Battery for water bowl <10%"
+              message: "Battery for water bowl <10%"
 
       - conditions:
           - condition: numeric_state
@@ -85,7 +84,7 @@ action:
         sequence:
           - <<: *trigger_battery_warning
             data:
-              option: "Battery for kitchen flap <10%"
+              message: "Battery for kitchen flap <10%"
 
       - conditions:
           - condition: numeric_state
@@ -94,7 +93,7 @@ action:
         sequence:
           - <<: *trigger_battery_warning
             data:
-              option: "Battery for door sensor <10%"
+              message: "Battery for door sensor <10%"
 
       - conditions:
           - condition: numeric_state
@@ -103,4 +102,4 @@ action:
         sequence:
           - <<: *trigger_battery_warning
             data:
-              option: "Battery for light intensity sensor <10%"
+              message: "Battery for light intensity sensor <10%"
