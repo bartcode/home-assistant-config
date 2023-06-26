@@ -61,13 +61,16 @@ action:
               option: "night"
 
       - conditions:
-          - and:
-              - condition: numeric_state
-                entity_id: sensor.outside_light_intensity
-                below: 150
-              - condition: time
-                after: "17:30:00"
-                before: "07:00:00"
+          - or:
+            - and:
+                - condition: numeric_state
+                  entity_id: sensor.outside_light_intensity
+                  below: 150
+                - condition: time
+                  after: "17:30:00"
+                  before: "07:00:00"
+            - condition: time
+              after: "21:30:00"
         sequence:
           - <<: *select_schedule
             data:

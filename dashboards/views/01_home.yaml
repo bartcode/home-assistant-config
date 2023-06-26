@@ -230,7 +230,7 @@ cards:
             columns: 4
             cards:
               - type: tile
-                entity: sensor.pixel_7_pro_battery
+                entity: sensor.pixel_7_pro_battery_level
                 vertical: true
 
               - type: tile
