@@ -340,7 +340,7 @@ display:
     dc_pin: GPIO27
     busy_pin: GPIO25
     reset_pin: GPIO26
-    model: 7.50inv2
+    model: 7.50in-bv3
     rotation: 90°
     lambda: |-
       if (id(initial_data_received) == false) {
