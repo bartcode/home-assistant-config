@@ -17,14 +17,14 @@ trigger:
       - sensor.kitchen_flap_battery_level
       - sensor.door_sensor_battery
       - sensor.light_intensity_battery
+    below: 25
 
 variables:
   anchors:
     - &trigger_battery_warning
       alias: Trigger battery warning
       service: notify.notify
-      data:
-        title: Battery warning
+      data: {}
 
 action:
   - choose:
@@ -36,6 +36,7 @@ action:
         sequence:
           - <<: *trigger_battery_warning
             data:
+              title: Battery warning
               message: "Battery for water bowl <25%"
 
       - conditions:
@@ -46,6 +47,7 @@ action:
         sequence:
           - <<: *trigger_battery_warning
             data:
+              title: Battery warning
               message: "Battery for kitchen flap <25%"
 
       - conditions:
@@ -56,6 +58,7 @@ action:
         sequence:
           - <<: *trigger_battery_warning
             data:
+              title: Battery warning
               message: "Battery for door sensor <25%"
 
       - conditions:
@@ -66,6 +69,7 @@ action:
         sequence:
           - <<: *trigger_battery_warning
             data:
+              title: Battery warning
               message: "Battery for light intensity sensor <25%"
 
       - conditions:
@@ -75,6 +79,7 @@ action:
         sequence:
           - <<: *trigger_battery_warning
             data:
+              title: Battery warning
               message: "Battery for water bowl <10%"
 
       - conditions:
@@ -84,6 +89,7 @@ action:
         sequence:
           - <<: *trigger_battery_warning
             data:
+              title: Battery warning
               message: "Battery for kitchen flap <10%"
 
       - conditions:
@@ -93,6 +99,7 @@ action:
         sequence:
           - <<: *trigger_battery_warning
             data:
+              title: Battery warning
               message: "Battery for door sensor <10%"
 
       - conditions:
@@ -102,4 +109,5 @@ action:
         sequence:
           - <<: *trigger_battery_warning
             data:
+              title: Battery warning
               message: "Battery for light intensity sensor <10%"
