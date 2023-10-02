@@ -19,12 +19,6 @@ trigger:
       - binary_sensor.home_presence
       - input_select.light_schedule
 
-  - platform: time
-    at: "22:00:00"
-
-  - platform: time
-    at: "23:00:00"
-
 variables:
   anchors:
     - &turn_off_lights
@@ -61,8 +55,5 @@ action:
                   - condition: state
                     entity_id: input_select.light_schedule
                     state: day
-              - condition: time
-                after: "16:00:00"
-                before: "23:30:00"
         sequence:
           - *turn_off_lights

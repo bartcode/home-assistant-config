@@ -86,9 +86,13 @@ action:
               - condition: state
                 entity_id: binary_sensor.home_presence
                 state: "off"
-              - condition: state
-                entity_id: input_select.light_schedule
-                state: "night"
+              - or:
+                - condition: state
+                  entity_id: input_select.light_schedule
+                  state: "day"
+                - condition: state
+                  entity_id: input_select.light_schedule
+                  state: "night"
         sequence:
           - *turn_off_lights
           - *turn_off_switches

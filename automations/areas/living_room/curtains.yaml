@@ -14,24 +14,6 @@ trigger:
   - platform: event
     event_type: automation_reloaded
 
-  - platform: time
-    at: "08:00:00"
-
-  - platform: time
-    at: "08:30:00"
-
-  - platform: time
-    at: "09:00:00"
-
-  - platform: sun
-    event: sunrise
-
-  - platform: time
-    at: "09:30:00"
-
-  - platform: time
-    at: "21:30:00"
-
   - platform: state
     entity_id:
       - input_select.light_schedule
@@ -53,28 +35,12 @@ variables:
 action:
   - choose:
       - conditions:
-          - and:
-              - or:
-                  - and:
-                      - condition: time
-                        after: "09:30:00"
-                        before: "21:30:00"
-                      - condition: state
-                        entity_id: binary_sensor.weekend
-                        state: "on"
-                  - and:
-                      - condition: time
-                        after: "08:00:00"
-                        before: "21:30:00"
-                      - condition: state
-                        entity_id: binary_sensor.workday
-                        state: "on"
-              - condition: state
-                entity_id: input_select.light_schedule
-                state: "day"
-              - condition: state
-                entity_id: cover.front_pro
-                state: closed
+          - condition: state
+            entity_id: input_select.light_schedule
+            state: "day"
+          - condition: state
+            entity_id: cover.front_pro
+            state: "closed"
         sequence:
           - *open_curtains
 
@@ -87,7 +53,7 @@ action:
                 entity_id: input_select.light_schedule
                 state: "night"
               - condition: time
-                after: "21:30:00"
-                before: "08:00:00"
+                after: "16:30:00"
+                before: "07:30:00"
         sequence:
           - *close_curtains

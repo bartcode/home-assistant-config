@@ -16,12 +16,8 @@ trigger:
 
   - platform: state
     entity_id:
-      - binary_sensor.home_presence
-    to: "off"
-
-  - platform: state
-    entity_id:
       - input_select.light_schedule
+      - binary_sensor.home_presence
 
 variables:
   anchors:

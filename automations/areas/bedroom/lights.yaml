@@ -17,7 +17,6 @@ trigger:
   - platform: state
     entity_id:
       - binary_sensor.home_presence
-    to: "off"
 
 variables:
   anchors:

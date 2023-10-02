@@ -14,23 +14,21 @@ trigger:
       - binary_sensor.home_presence
 
   - platform: numeric_state
-    above: 150
+    above: 175
+    for:
+      minutes: 10
     entity_id:
       - sensor.outside_light_intensity
 
   - platform: numeric_state
     below: 150
+    for:
+      minutes: 10
     entity_id:
       - sensor.outside_light_intensity
 
   - platform: time
     at: "08:00:00"
-
-  - platform: time
-    at: "08:30:00"
-
-  - platform: time
-    at: "09:30:00"
 
   - platform: time
     at: "21:30:00"
@@ -54,7 +52,7 @@ action:
       - conditions:
           - condition: time
             after: "22:00:00"
-            before: "07:00:00"
+            before: "07:30:00"
         sequence:
           - <<: *select_schedule
             data:
@@ -67,7 +65,7 @@ action:
                     entity_id: sensor.outside_light_intensity
                     below: 150
                   - condition: time
-                    after: "17:30:00"
+                    after: "17:00:00"
                     before: "07:00:00"
               - condition: time
                 after: "21:30:00"
@@ -78,9 +76,12 @@ action:
               option: "evening"
 
       - conditions:
+        - and:
           - condition: numeric_state
             entity_id: sensor.outside_light_intensity
             above: 175
+          - condition: time
+            after: "07:30:00"
 
         sequence:
           - <<: *select_schedule
