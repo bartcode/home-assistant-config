@@ -5,6 +5,6 @@ icon: mdi:lightbulb
 entities:
   light.hallway:
     state: "on"
-    brightness_pct: 25
+    brightness_pct: 15
   light.entryway:
     state: "off"

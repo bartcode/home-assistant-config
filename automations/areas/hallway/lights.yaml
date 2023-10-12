@@ -25,7 +25,9 @@ variables:
       alias: "Turn the lights off"
       service: light.turn_off
       target:
-        area_id: hallway
+        entity_id:
+          - light.hallway
+          - light.entryway
 
     - &turn_on_cosy_evening_lights
       alias: "Make it a cosy evening"

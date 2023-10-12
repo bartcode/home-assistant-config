@@ -26,26 +26,30 @@ variables:
       alias: "Turn the lights off"
       service: light.turn_off
       target:
-        area_id: living_room
+        entity_id:
+          - light.living_room
+          - light.standing_light
 
     - &turn_off_switches
       alias: "Turn the lights off"
       service: switch.turn_off
       target:
-        area_id: living_room
+        entity_id:
+          - switch.dressoir_light
 
     - &turn_on_lights_against_thieves
       alias: "Turn the dressoir light on"
       service: switch.turn_on
       target:
         entity_id:
-          - scene.living_room_away
+          - switch.dressoir_light
 
     - &turn_on_cosy_evening_lights
       alias: "Make it a cosy evening"
       service: scene.turn_on
       target:
-        entity_id: scene.living_room_cosy
+        entity_id:
+          - scene.living_room_cosy
 
 action:
   - choose:

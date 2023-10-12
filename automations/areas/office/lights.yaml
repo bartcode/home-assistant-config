@@ -24,7 +24,8 @@ variables:
       alias: "Turn the lights off"
       service: light.turn_off
       target:
-        area_id: office
+        entity_id:
+          - light.office
 
 action:
   - choose:
