@@ -44,12 +44,12 @@ variables:
         entity_id:
           - switch.dressoir_light
 
-    - &turn_on_cosy_evening_lights
-      alias: "Make it a cosy evening"
-      service: scene.turn_on
+    - &turn_on_evening_lights
+      alias: "Turn on evening mode evening"
+      service: light.turn_on
       target:
         entity_id:
-          - scene.living_room_cosy
+          - light.standing_light
 
 action:
   - choose:
@@ -72,7 +72,8 @@ action:
                 entity_id: cover.front_pro
                 state: "closed"
         sequence:
-          - *turn_on_cosy_evening_lights
+          - *turn_on_evening_lights
+          - *turn_on_lights_against_thieves
 
       - conditions:
           - and:
