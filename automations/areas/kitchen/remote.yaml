@@ -1,5 +1,6 @@
 alias: remote_kitchen
 description: "Kitchen Philips Hue remote v2"
+id: bc293267-2cdc-4ef0-ab9e-e082ba1388af
 use_blueprint:
   path: philips/hue_remote.yaml
   input:

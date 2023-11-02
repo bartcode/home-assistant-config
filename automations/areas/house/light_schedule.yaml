@@ -27,6 +27,11 @@ trigger:
     entity_id:
       - sensor.outside_light_intensity
 
+  - platform: numeric_state
+    below: 100
+    entity_id:
+      - sensor.outside_light_intensity
+
   - platform: time
     at: "08:00:00"
 
