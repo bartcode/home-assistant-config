@@ -71,7 +71,7 @@ action:
                     entity_id: sensor.outside_light_intensity
                     below: 150
                   - condition: time
-                    after: "17:00:00"
+                    after: "16:00:00"
                     before: "07:00:00"
               - condition: time
                 after: "21:30:00"
