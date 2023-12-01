@@ -10,7 +10,7 @@ trace:
 trigger:
   - platform: state
     entity_id:
-      - switch.ps5_power
+      - switch.ps5_351_power
 
 variables:
   anchors:
