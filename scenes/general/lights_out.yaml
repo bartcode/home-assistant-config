@@ -27,5 +27,3 @@ entities:
     state: "off"
   light.inside:
     state: "off"
-  light.shed_night_light:
-    state: "off"

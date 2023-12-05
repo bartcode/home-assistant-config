@@ -18,7 +18,6 @@ trigger:
     entity_id:
       - binary_sensor.home_presence
       - input_select.light_schedule
-      - cover.front_pro
 
 variables:
   anchors:
@@ -31,7 +30,7 @@ variables:
           - light.standing_light
 
     - &turn_off_switches
-      alias: "Turn the lights off"
+      alias: "Turn the switches off"
       service: switch.turn_off
       target:
         entity_id:
@@ -66,14 +65,10 @@ action:
                   entity_id: input_select.light_schedule
                   state: "day"
               - condition: time
-                after: "16:00:00"
+                after: "14:00:00"
                 before: "23:30:00"
-              - condition: state
-                entity_id: cover.front_pro
-                state: "closed"
         sequence:
           - *turn_on_evening_lights
-          - *turn_on_lights_against_thieves
 
       - conditions:
           - and:

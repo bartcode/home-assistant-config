@@ -17,7 +17,7 @@ trigger:
       - sensor.kitchen_flap_battery_level
       - sensor.door_sensor_battery
       - sensor.light_intensity_battery
-    below: 25
+    below: 15
 
 variables:
   anchors:
@@ -31,46 +31,46 @@ action:
       - conditions:
           - condition: numeric_state
             entity_id: sensor.water_bowl_battery_level
-            below: 25
+            below: 15
             above: 10
         sequence:
           - <<: *trigger_battery_warning
             data:
               title: Battery warning
-              message: "Battery for water bowl <25%"
+              message: "Battery for water bowl <15%"
 
       - conditions:
           - condition: numeric_state
             entity_id: sensor.kitchen_flap_battery_level
-            below: 25
+            below: 15
             above: 10
         sequence:
           - <<: *trigger_battery_warning
             data:
               title: Battery warning
-              message: "Battery for kitchen flap <25%"
+              message: "Battery for kitchen flap <15%"
 
       - conditions:
           - condition: numeric_state
             entity_id: sensor.door_sensor_battery
-            below: 25
+            below: 15
             above: 10
         sequence:
           - <<: *trigger_battery_warning
             data:
               title: Battery warning
-              message: "Battery for door sensor <25%"
+              message: "Battery for door sensor <15%"
 
       - conditions:
           - condition: numeric_state
             entity_id: sensor.light_intensity_battery
-            below: 25
+            below: 15
             above: 10
         sequence:
           - <<: *trigger_battery_warning
             data:
               title: Battery warning
-              message: "Battery for light intensity sensor <25%"
+              message: "Battery for light intensity sensor <15%"
 
       - conditions:
           - condition: numeric_state

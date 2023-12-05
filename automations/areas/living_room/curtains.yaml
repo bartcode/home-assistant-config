@@ -15,7 +15,7 @@ trigger:
     event_type: automation_reloaded
 
   - platform: numeric_state
-    below: 100
+    below: 120
     entity_id:
       - sensor.outside_light_intensity
 

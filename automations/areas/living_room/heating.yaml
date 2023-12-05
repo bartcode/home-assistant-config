@@ -23,9 +23,11 @@ variables:
   anchors:
     - &turn_off_heating
       alias: "Turn the heating off"
-      service: climate.turn_off
+      service: climate.set_temperature
       target:
-        area_id: living_room
+        entity_id: climate.living_room
+      data:
+        temperature: 16
 
 action:
   - choose:

@@ -386,22 +386,22 @@ display:
           };
 
         // Fill background.
-        // it.fill(color_bg);
+        it.fill(color_bg);
 
         // Weather Section
-        it.image(0, 88, id(title_weather));
+        // it.image(0, 88, id(title_weather));
 
-        it.printf(100, 158, id(font_mdi_large), color_text, TextAlign::TOP_CENTER, "%s", icon_map[id(weather_condition_now).state.c_str()].c_str());
+        it.printf(100, 100, id(font_mdi_large), color_text, TextAlign::TOP_CENTER, "%s", icon_map[id(weather_condition_now).state.c_str()].c_str());
 
-        it.printf(300, 158, id(font_large_bold), color_text, TextAlign::TOP_CENTER, "%2.0f°C", id(weather_temperature_0).state);
+        it.printf(300, 100, id(font_large_bold), color_text, TextAlign::TOP_CENTER, "%2.0f°C", id(weather_temperature_0).state);
 
-        it.printf(135, 282, id(font_small_book), color_text, TextAlign::TOP_CENTER, "%s", id(weather_timestamp_0).state.c_str());
-        it.printf(135, 324, id(font_mdi_medium), color_text, TextAlign::TOP_CENTER, "%s", icon_map[id(weather_condition_0).state.c_str()].c_str());
-        it.printf(135, 384, id(font_small_book), color_text, TextAlign::TOP_CENTER, "%2.0f°C", id(weather_temperature_0).state);
+        it.printf(135, 260, id(font_small_book), color_text, TextAlign::TOP_CENTER, "%s", id(weather_timestamp_0).state.c_str());
+        it.printf(135, 312, id(font_mdi_medium), color_text, TextAlign::TOP_CENTER, "%s", icon_map[id(weather_condition_0).state.c_str()].c_str());
+        it.printf(135, 372, id(font_small_book), color_text, TextAlign::TOP_CENTER, "%2.0f°C", id(weather_temperature_0).state);
 
-        it.printf(360, 282, id(font_small_book), color_text, TextAlign::TOP_CENTER, "%s", id(weather_timestamp_1).state.c_str());
-        it.printf(360, 324, id(font_mdi_medium), color_text, TextAlign::TOP_CENTER, "%s", icon_map[id(weather_condition_1).state.c_str()].c_str());
-        it.printf(360, 384, id(font_small_book), color_text, TextAlign::TOP_CENTER, "%2.0f°C", id(weather_temperature_1).state);
+        it.printf(360, 260, id(font_small_book), color_text, TextAlign::TOP_CENTER, "%s", id(weather_timestamp_1).state.c_str());
+        it.printf(360, 312, id(font_mdi_medium), color_text, TextAlign::TOP_CENTER, "%s", icon_map[id(weather_condition_1).state.c_str()].c_str());
+        it.printf(360, 372, id(font_small_book), color_text, TextAlign::TOP_CENTER, "%2.0f°C", id(weather_temperature_1).state);
 
         it.printf(135, 464, id(font_small_book), color_text, TextAlign::TOP_CENTER, "%s", id(weather_timestamp_2).state.c_str());
         it.printf(135, 504, id(font_mdi_medium), color_text, TextAlign::TOP_CENTER, "%s", icon_map[id(weather_condition_2).state.c_str()].c_str());

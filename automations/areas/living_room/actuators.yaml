@@ -9,8 +9,13 @@ trace:
 
 trigger:
   - platform: state
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 10
+      milliseconds: 0
     entity_id:
-      - switch.ps5_351_power
+      - switch.ps5_011_power
 
 variables:
   anchors:
@@ -46,7 +51,7 @@ action:
   - choose:
       - conditions:
           - condition: state
-            entity_id: switch.ps5_power
+            entity_id: switch.ps5_011_power
             state: "on"
         sequence:
           - *stop_actuator

@@ -36,7 +36,7 @@ cards:
               - type: tile
                 entity: sensor.water_bowl
               - type: tile
-                entity: switch.ps5_351_power
+                entity: switch.ps5_011_power
           - type: markdown
             content: >
               ### Quick scenes
@@ -191,20 +191,20 @@ cards:
           - type: markdown
             content: >
               ## Shed
-          - type: tile
-            entity: light.shed_outside_group
-            name: Outside
-            features:
-              - type: "light-brightness"
           - type: horizontal-stack
             cards:
+              - type: tile
+                entity: light.shed_outside_group
+                name: Outside
+                features:
+                  - type: "light-brightness"
               - type: tile
                 entity: light.inside
                 features:
                   - type: "light-brightness"
-              - type: tile
-                name: Night light
-                entity: light.shed_night_light
+          - type: thermostat
+            entity: climate.radiateur
+            name: Shed heater
   - type: grid
     square: false
     columns: 1
@@ -226,7 +226,7 @@ cards:
             columns: 4
             cards:
               - type: tile
-                entity: sensor.pixel_7_pro_battery_level
+                entity: sensor.pixel_8_pro_battery_level
                 vertical: true
 
               - type: tile
