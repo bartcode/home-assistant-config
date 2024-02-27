@@ -83,8 +83,7 @@ cards:
           - type: thermostat
             entity: climate.living_room
           - type: media-control
-            entity:
-              media_player.living_room
+            entity: media_player.living_room
   - type: grid
     square: false
     columns: 1
@@ -105,8 +104,7 @@ cards:
                 features:
                   - type: "light-brightness"
           - type: picture-entity
-            entity:
-              camera.entryway
+            entity: camera.entryway
   - type: grid
     square: false
     columns: 1
@@ -125,8 +123,7 @@ cards:
               - type: tile
                 entity: switch.bed_light
           - type: media-control
-            entity:
-              media_player.bedroom
+            entity: media_player.bedroom
   - type: grid
     square: false
     columns: 1
@@ -144,12 +141,12 @@ cards:
                   - type: "light-brightness"
               - type: horizontal-stack
                 cards:
-                - type: tile
-                  name: Dishwasher
-                  entity: switch.dishwasher_power
-                - type: tile
-                  name: ETA
-                  entity: sensor.dishwasher_remaining_program_time
+                  - type: tile
+                    name: Dishwasher
+                    entity: switch.dishwasher_power
+                  - type: tile
+                    name: ETA
+                    entity: sensor.dishwasher_remaining_program_time
               - type: horizontal-stack
                 cards:
                   - type: tile
@@ -162,8 +159,7 @@ cards:
                     name: Out
                     entity: lock.kitchen_flap_locked_out
               - type: media-control
-                entity:
-                  media_player.kitchen
+                entity: media_player.kitchen
   - type: grid
     square: false
     columns: 1
@@ -180,8 +176,7 @@ cards:
                 features:
                   - type: "light-brightness"
               - type: media-control
-                entity:
-                  media_player.office
+                entity: media_player.office
   - type: grid
     square: false
     columns: 1
@@ -209,9 +204,89 @@ cards:
     square: false
     columns: 1
     cards:
-      - type: energy-distribution
-        title: Energy distribution today
-        link_dashboard: true
+      - type: vertical-stack
+        cards:
+          - type: markdown
+            content: >
+              ## Energy
+          - type: grid
+            square: false
+            columns: 2
+            cards:
+              - type: sensor
+                entity: sensor.average_electricity_price_today
+                graph: line
+                name: Average
+                limits:
+                  min: 0
+                  max: .4
+              - type: sensor
+                entity: sensor.current_electricity_market_price
+                graph: line
+                name: Current
+                limits:
+                  min: 0
+                  max: .4
+              - type: sensor
+                entity: sensor.current_percentage_of_highest_electricity_price_today
+                graph: line
+                name: "% of high"
+                limits:
+                  min: 0
+                  max: .4
+              - type: sensor
+                entity: sensor.next_hour_electricity_market_price
+                name: Next hour
+                graph: line
+                limits:
+                  min: 0
+                  max: .4
+              - type: sensor
+                entity: sensor.highest_energy_price_today
+                name: High
+              - type: sensor
+                entity: sensor.lowest_energy_price_today
+                name: Low
+              - type: sensor
+                entity: sensor.time_of_highest_price_today
+                name: Time of high
+                format: datetime
+              - type: sensor
+                entity: sensor.time_of_lowest_price_today
+                name: Time of low
+                format: datetime
+          - type: custom:apexcharts-card
+            graph_span: 24h
+            span:
+              start: day
+            now:
+              show: true
+              label: Now
+            header:
+              show: true
+              title: Electricity price today (€/kwh)
+            yaxis:
+              - decimals: 2
+                min: 0
+                max: .5
+            series:
+              - entity: sensor.average_electricity_price_today
+                stroke_width: 2
+                float_precision: 3
+                type: column
+                opacity: 1
+                color: ""
+                data_generator: |
+                  return entity.attributes.prices.map((entry) => {
+                    return [new Date(entry.time), entry.price];
+                  });
+          - type: grid
+            square: false
+            columns: 1
+            cards:
+              - type: energy-distribution
+                title: Energy distribution today
+                link_dashboard: true
   - type: grid
     square: false
     columns: 1

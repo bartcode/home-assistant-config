@@ -8,3 +8,6 @@ lovelace:
       title: Gibraltar
       icon: mdi:home-analytics
       show_in_sidebar: true
+  resources:
+    - url: /local/apexcharts-card.js?v=2.0.4
+      type: module
