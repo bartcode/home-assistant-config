@@ -169,32 +169,8 @@ sensor:
 
   - platform: homeassistant
     entity_id: sensor.weatherman_data
-    attribute: weather_temperature_0
-    id: weather_temperature_0
-    on_value:
-      then:
-         - lambda: 'id(data_updated) = true;'
-
-  - platform: homeassistant
-    entity_id: sensor.weatherman_data
-    attribute: weather_temperature_1
-    id: weather_temperature_1
-    on_value:
-      then:
-         - lambda: 'id(data_updated) = true;'
-
-  - platform: homeassistant
-    entity_id: sensor.weatherman_data
-    attribute: weather_temperature_2
-    id: weather_temperature_2
-    on_value:
-      then:
-         - lambda: 'id(data_updated) = true;'
-
-  - platform: homeassistant
-    entity_id: sensor.weatherman_data
-    attribute: weather_temperature_3
-    id: weather_temperature_3
+    attribute: weather_temperature
+    id: weather_temperature
     on_value:
       then:
          - lambda: 'id(data_updated) = true;'
@@ -240,36 +216,12 @@ text_sensor:
     id: weather_condition_now
   - platform: homeassistant
     entity_id: sensor.weatherman_data
-    attribute: weather_condition_0
-    id: weather_condition_0
+    attribute: weather_condition
+    id: weather_condition
   - platform: homeassistant
     entity_id: sensor.weatherman_data
-    attribute: weather_timestamp_0
-    id: weather_timestamp_0
-  - platform: homeassistant
-    entity_id: sensor.weatherman_data
-    attribute: weather_condition_1
-    id: weather_condition_1
-  - platform: homeassistant
-    entity_id: sensor.weatherman_data
-    attribute: weather_timestamp_1
-    id: weather_timestamp_1
-  - platform: homeassistant
-    entity_id: sensor.weatherman_data
-    attribute: weather_condition_2
-    id: weather_condition_2
-  - platform: homeassistant
-    entity_id: sensor.weatherman_data
-    attribute: weather_timestamp_2
-    id: weather_timestamp_2
-  - platform: homeassistant
-    entity_id: sensor.weatherman_data
-    attribute: weather_condition_3
-    id: weather_condition_3
-  - platform: homeassistant
-    entity_id: sensor.weatherman_data
-    attribute: weather_timestamp_3
-    id: weather_timestamp_3
+    attribute: weather_timestamp
+    id: weather_timestamp
 
   - platform: homeassistant
     entity_id: calendar.baloekie
@@ -393,28 +345,12 @@ display:
 
         it.printf(100, 100, id(font_mdi_large), color_text, TextAlign::TOP_CENTER, "%s", icon_map[id(weather_condition_now).state.c_str()].c_str());
 
-        it.printf(300, 100, id(font_large_bold), color_text, TextAlign::TOP_CENTER, "%2.0f°C", id(weather_temperature_0).state);
-
-        it.printf(135, 260, id(font_small_book), color_text, TextAlign::TOP_CENTER, "%s", id(weather_timestamp_0).state.c_str());
-        it.printf(135, 312, id(font_mdi_medium), color_text, TextAlign::TOP_CENTER, "%s", icon_map[id(weather_condition_0).state.c_str()].c_str());
-        it.printf(135, 372, id(font_small_book), color_text, TextAlign::TOP_CENTER, "%2.0f°C", id(weather_temperature_0).state);
-
-        it.printf(360, 260, id(font_small_book), color_text, TextAlign::TOP_CENTER, "%s", id(weather_timestamp_1).state.c_str());
-        it.printf(360, 312, id(font_mdi_medium), color_text, TextAlign::TOP_CENTER, "%s", icon_map[id(weather_condition_1).state.c_str()].c_str());
-        it.printf(360, 372, id(font_small_book), color_text, TextAlign::TOP_CENTER, "%2.0f°C", id(weather_temperature_1).state);
-
-        it.printf(135, 464, id(font_small_book), color_text, TextAlign::TOP_CENTER, "%s", id(weather_timestamp_2).state.c_str());
-        it.printf(135, 504, id(font_mdi_medium), color_text, TextAlign::TOP_CENTER, "%s", icon_map[id(weather_condition_2).state.c_str()].c_str());
-        it.printf(135, 564, id(font_small_book), color_text, TextAlign::TOP_CENTER, "%2.0f°C", id(weather_temperature_2).state);
-
-        it.printf(360, 462, id(font_small_book), color_text, TextAlign::TOP_CENTER, "%s", id(weather_timestamp_3).state.c_str());
-        it.printf(360, 504, id(font_mdi_medium), color_text, TextAlign::TOP_CENTER, "%s", icon_map[id(weather_condition_3).state.c_str()].c_str());
-        it.printf(360, 564, id(font_small_book), color_text, TextAlign::TOP_CENTER, "%2.0f°C", id(weather_temperature_3).state);
+        it.printf(300, 100, id(font_large_bold), color_text, TextAlign::TOP_CENTER, "%2.0f°C", id(weather_temperature).state);
 
         if (id(calendar_message).state != "") {
-          it.printf(80, 660, id(font_mdi_bigger), color_text, TextAlign::TOP_CENTER, "%s", icon_map["calendar-today"].c_str());
-          it.printf(145, 660, id(font_big_bold), color_text, TextAlign::TOP_LEFT, "%s-%s %s", id(calendar_start_time).state.substr(8, 2).c_str(), id(calendar_start_time).state.substr(5, 2).c_str(), id(calendar_start_time).state.substr(11, 5).c_str());
-          it.printf(145, 700, id(font_big_bold), color_text, TextAlign::TOP_LEFT, "%s", id(calendar_message).state.c_str());
+          it.printf(80, 630, id(font_mdi_bigger), color_text, TextAlign::TOP_CENTER, "%s", icon_map["calendar-today"].c_str());
+          it.printf(145, 630, id(font_big_bold), color_text, TextAlign::TOP_LEFT, "%s-%s %s", id(calendar_start_time).state.substr(8, 2).c_str(), id(calendar_start_time).state.substr(5, 2).c_str(), id(calendar_start_time).state.substr(11, 5).c_str());
+          it.printf(145, 670, id(font_big_bold), color_text, TextAlign::TOP_LEFT, "%s", id(calendar_message).state.c_str());
         }
       }
 
