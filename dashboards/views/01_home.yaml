@@ -214,49 +214,57 @@ cards:
             columns: 2
             cards:
               - type: sensor
-                entity: sensor.average_electricity_price_today
+                entity: sensor.home_average_electricity_price_today
                 graph: line
                 name: Average
                 limits:
                   min: 0
                   max: .4
               - type: sensor
-                entity: sensor.current_electricity_market_price
+                entity: sensor.home_current_electricity_market_price
                 graph: line
                 name: Current
                 limits:
                   min: 0
                   max: .4
               - type: sensor
-                entity: sensor.current_percentage_of_highest_electricity_price_today
+                entity: sensor.home_current_percentage_of_highest_electricity_price_today
                 graph: line
                 name: "% of high"
                 limits:
                   min: 0
                   max: .4
               - type: sensor
-                entity: sensor.next_hour_electricity_market_price
+                entity: sensor.home_next_hour_electricity_market_price
                 name: Next hour
                 graph: line
                 limits:
                   min: 0
                   max: .4
               - type: sensor
-                entity: sensor.highest_energy_price_today
+                entity: sensor.home_highest_energy_price_today
                 name: High
               - type: sensor
-                entity: sensor.lowest_energy_price_today
+                entity: sensor.home_lowest_energy_price_today
                 name: Low
               - type: sensor
-                entity: sensor.time_of_highest_price_today
+                entity: sensor.home_time_of_highest_price_today
                 name: Time of high
-                format: datetime
+                format: time
               - type: sensor
-                entity: sensor.time_of_lowest_price_today
+                entity: sensor.home_time_of_lowest_price_today
                 name: Time of low
-                format: datetime
+                format: time
           - type: custom:apexcharts-card
-            graph_span: 24h
+            graph_span: 2d
+            apex_config:
+              legend:
+                show: false
+            experimental:
+              color_threshold: true
+              brush: false
+            all_series_config:
+              stroke_width: 3
             span:
               start: day
             now:
@@ -264,21 +272,44 @@ cards:
               label: Now
             header:
               show: true
+              floating: false
+              colorize_states: true
               title: Electricity price today (€/kwh)
             yaxis:
               - decimals: 2
                 min: 0
                 max: .5
+                id: left
+              - decimals: 2
+                min: 0
+                max: .5
+                id: right
+                show: false
+                opposite: true
             series:
-              - entity: sensor.average_electricity_price_today
+              - entity: sensor.home_average_electricity_price_today
                 stroke_width: 2
                 float_precision: 3
-                type: column
+                type: line
+                fill_raw: last
+                color_threshold:
+                  - value: 15
+                    color: '#318ce8'
+                  - value: .25
+                    color: '#bcf74f'
+                  - value: .3
+                    color: '#ff9600'
+                  - value: .4
+                    color: '#f44336'
                 opacity: 1
                 color: ""
+                yaxis_id: left
+                show:
+                  extremas: time
+                  in_brush: true
                 data_generator: |
                   return entity.attributes.prices.map((entry) => {
-                    return [new Date(entry.time), entry.price];
+                    return [new Date(entry.time).getTime(), entry.price];
                   });
           - type: grid
             square: false

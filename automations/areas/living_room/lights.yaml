@@ -58,12 +58,15 @@ action:
                 entity_id: binary_sensor.home_presence
                 state: "on"
               - or:
-                - condition: state
-                  entity_id: input_select.light_schedule
-                  state: "evening"
+                  - condition: state
+                    entity_id: input_select.light_schedule
+                    state: "evening"
+                  - condition: state
+                    entity_id: input_select.light_schedule
+                    state: "night"
               - condition: time
-                after: "14:00:00"
-                before: "23:30:00"
+                after: "16:30:00"
+                before: "07:30:00"
         sequence:
           - *turn_on_evening_lights
 
@@ -84,12 +87,12 @@ action:
                 entity_id: binary_sensor.home_presence
                 state: "off"
               - or:
-                - condition: state
-                  entity_id: input_select.light_schedule
-                  state: "day"
-                - condition: state
-                  entity_id: input_select.light_schedule
-                  state: "night"
+                  - condition: state
+                    entity_id: input_select.light_schedule
+                    state: "day"
+                  - condition: state
+                    entity_id: input_select.light_schedule
+                    state: "night"
         sequence:
           - *turn_off_lights
           - *turn_off_switches
