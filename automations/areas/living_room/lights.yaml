@@ -61,9 +61,6 @@ action:
                   - condition: state
                     entity_id: input_select.light_schedule
                     state: "evening"
-                  - condition: state
-                    entity_id: input_select.light_schedule
-                    state: "night"
               - condition: time
                 after: "16:30:00"
                 before: "07:30:00"
