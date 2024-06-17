@@ -77,7 +77,7 @@ cards:
                 icon: mdi:lamp
                 color: yellow
           - type: tile
-            entity: cover.front_pro
+            entity: cover.slide
             features:
               - type: "cover-open-close"
           - type: thermostat

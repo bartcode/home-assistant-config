@@ -29,13 +29,13 @@ variables:
       alias: "Open the curtains"
       service: cover.open_cover
       target:
-        entity_id: cover.front_pro
+        entity_id: cover.slide
 
     - &close_curtains
       alias: "Close the curtains"
       service: cover.close_cover
       target:
-        entity_id: cover.front_pro
+        entity_id: cover.slide
 
 action:
   - choose:
@@ -44,7 +44,7 @@ action:
             entity_id: input_select.light_schedule
             state: "day"
           - condition: state
-            entity_id: cover.front_pro
+            entity_id: cover.slide
             state: "closed"
         sequence:
           - *open_curtains
