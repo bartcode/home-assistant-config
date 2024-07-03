@@ -15,16 +15,7 @@ sensor:
         {% endif %}
 
       weather_condition: >
-        {% set cond0 = states.sensor.openweathermap_forecast_condition.state %}
-        {% set next_setting = as_timestamp(state_attr('sun.sun', 'next_setting')) %}
-        {% set next_rising = as_timestamp(state_attr('sun.sun', 'next_rising')) %}
-        {% set cond0_time = as_timestamp(states.sensor.openweathermap_forecast_time.state) %}
-        {% if cond0_time < next_rising and next_rising < next_setting %}
-            {% if cond0 == 'sunny' %} night {% elif cond0 == 'partlycloudy' %} night-partly-cloudy {% else %} {{ cond0 }} {% endif %}
-        {% else %}
-            {{ cond0 }}
-        {% endif %}
+        {% set cond0 = states.sensor.openweathermap_condition.state %}
+        {{ cond0 }}
       weather_temperature: >
-        {{ states.sensor.openweathermap_forecast_temperature.state | round }}
-      weather_timestamp: >
-        {{ as_timestamp(states.sensor.openweathermap_forecast_time.state) | timestamp_custom('%I') | int }} {{ as_timestamp(states.sensor.openweathermap_forecast_time.state) | timestamp_custom('%p') }}
+        {{ states.sensor.openweathermap_temperature.state | round }}

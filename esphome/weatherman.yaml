@@ -24,6 +24,7 @@ logger:
 api:
 
 ota:
+  platform: "esphome"
   password: !secret ota_password
 
 globals:
@@ -218,10 +219,6 @@ text_sensor:
     entity_id: sensor.weatherman_data
     attribute: weather_condition
     id: weather_condition
-  - platform: homeassistant
-    entity_id: sensor.weatherman_data
-    attribute: weather_timestamp
-    id: weather_timestamp
 
   - platform: homeassistant
     entity_id: calendar.baloekie

@@ -71,6 +71,7 @@ api:
           id(dsmr_instance).set_decryption_key(private_key);
 
 ota:
+  platform: "esphome"
   password: "2JOrpBYEHQsV"
 
 web_server:
