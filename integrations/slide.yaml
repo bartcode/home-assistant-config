@@ -1,5 +1,5 @@
----
-slide:
-  username: !secret slide_username
-  password: !secret slide_password
-  scan_interval: 300
+# ---
+# slide:
+#   username: !secret slide_username
+#   password: !secret slide_password
+#   scan_interval: 300

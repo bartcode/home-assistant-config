@@ -1,0 +1,5 @@
+---
+stt:
+  platform: google_cloud_stt
+  key_file: "service_account.json"
+  model: command_and_search
