@@ -61,5 +61,8 @@ action:
             - condition: time
               after: "16:30:00"
               before: "07:30:00"
+            - condition: state
+              entity_id: cover.slide
+              state: "open"
         sequence:
           - *close_curtains

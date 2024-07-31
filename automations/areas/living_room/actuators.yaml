@@ -19,6 +19,12 @@ trigger:
 
 variables:
   anchors:
+    - &select_actuator_status
+      alias: "Select the actuator status"
+      service: input_select.select_option
+      target:
+        entity_id:
+          - input_select.actuator
     - &expand_actuator
       alias: "Expand actuator"
       service: light.turn_on
@@ -50,16 +56,34 @@ variables:
 action:
   - choose:
       - conditions:
-          - condition: state
-            entity_id: switch.ps5_011_power
-            state: "on"
+          - and:
+              - condition: state
+                entity_id: switch.ps5_011_power
+                state: "on"
+              - condition: state
+                entity_id: input_select.actuator
+                state: closed
         sequence:
           - *stop_actuator
           - *expand_actuator
           - *delay
           - *stop_actuator
-    default:
-      - *stop_actuator
-      - *collapse_actuator
-      - *delay
-      - *stop_actuator
+          - <<: *select_actuator_status
+            data:
+              option: "open"
+      - conditions:
+          - and:
+              - condition: state
+                entity_id: switch.ps5_011_power
+                state: "off"
+              - condition: state
+                entity_id: input_select.actuator
+                state: open
+        sequence:
+          - *stop_actuator
+          - *collapse_actuator
+          - *delay
+          - *stop_actuator
+          - <<: *select_actuator_status
+            data:
+              option: "closed"

@@ -1,0 +1,6 @@
+---
+name: Actuator living room
+icon: mdi:arrow-expand-right
+options:
+  - open
+  - closed
